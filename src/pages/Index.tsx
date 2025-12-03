@@ -14,6 +14,7 @@ interface Section {
   icon: string;
   title: string;
   content: string[];
+  image?: string;
   timeline?: TimelineEvent[];
 }
 
@@ -22,6 +23,7 @@ const sections: Section[] = [
     id: 0,
     icon: 'BookOpen',
     title: 'Введение в эпоху Архея',
+    image: 'https://cdn.poehali.dev/projects/5ccb01e7-0e53-4429-a452-d5c1120944b0/files/c5be524e-e4a1-426a-86eb-f47fdc5d0729.jpg',
     content: [
       'Архей (Архейский эон) — один из древнейших периодов в истории Земли, продолжавшийся с 4,0 до 2,5 миллиардов лет назад.',
       'Название происходит от греческого слова "archaios" — древний.',
@@ -33,6 +35,7 @@ const sections: Section[] = [
     id: 1,
     icon: 'Wind',
     title: 'Состав атмосферы и условия жизни',
+    image: 'https://cdn.poehali.dev/projects/5ccb01e7-0e53-4429-a452-d5c1120944b0/files/c5be524e-e4a1-426a-86eb-f47fdc5d0729.jpg',
     content: [
       'Атмосфера Архея была бескислородной и состояла из метана (CH₄), аммиака (NH₃), водорода (H₂) и водяных паров.',
       'Температура поверхности была значительно выше современной — около 50-80°C.',
@@ -45,6 +48,7 @@ const sections: Section[] = [
     id: 2,
     icon: 'Microscope',
     title: 'Первые живые существа',
+    image: 'https://cdn.poehali.dev/projects/5ccb01e7-0e53-4429-a452-d5c1120944b0/files/c2a41c01-fda5-4deb-a42f-e20c983e60c0.jpg',
     content: [
       'Первыми живыми организмами были прокариоты — одноклеточные существа без ядра.',
       'Археи и бактерии — древнейшие формы жизни, появившиеся около 3,5-3,8 млрд лет назад.',
@@ -57,6 +61,7 @@ const sections: Section[] = [
     id: 3,
     icon: 'Sprout',
     title: 'Растительность и водоросли',
+    image: 'https://cdn.poehali.dev/projects/5ccb01e7-0e53-4429-a452-d5c1120944b0/files/0daf2ae1-f673-4b18-83a3-7adfc6133b7a.jpg',
     content: [
       'В современном понимании растений в Архее не существовало.',
       'Цианобактерии выполняли роль первичных продуцентов в экосистеме.',
@@ -235,6 +240,15 @@ const Index = () => {
       <div className="flex-1 flex items-center justify-center p-8 md:p-16">
         <div className="w-full max-w-4xl animate-fade-in">
           <Card className="p-8 md:p-12 bg-white/95 backdrop-blur border-none shadow-2xl">
+            {currentSection.image && (
+              <div className="mb-8 -mx-8 md:-mx-12 -mt-8 md:-mt-12">
+                <img
+                  src={currentSection.image}
+                  alt={currentSection.title}
+                  className="w-full h-64 md:h-80 object-cover rounded-t-xl"
+                />
+              </div>
+            )}
             <div className="flex items-center gap-4 mb-8">
               <div className="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center flex-shrink-0">
                 <Icon name={currentSection.icon as any} size={32} className="text-secondary" />
